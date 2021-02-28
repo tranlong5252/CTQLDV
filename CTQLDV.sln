@@ -1,7 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTQLDV", "CTQLDV\CTQLDV.csproj", "{5AFDAE81-2FCE-41A0-A579-9C19CA509513}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyCongVan", "..\..\SOFT\QuanLyCongVan\QuanLyCongVan\QuanLyCongVan.csproj", "{A74EF474-CD86-4BA6-A96F-B1BEF5177014}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,8 +17,15 @@ Global
 		{5AFDAE81-2FCE-41A0-A579-9C19CA509513}.Debug|x86.Build.0 = Debug|x86
 		{5AFDAE81-2FCE-41A0-A579-9C19CA509513}.Release|x86.ActiveCfg = Release|x86
 		{5AFDAE81-2FCE-41A0-A579-9C19CA509513}.Release|x86.Build.0 = Release|x86
+		{A74EF474-CD86-4BA6-A96F-B1BEF5177014}.Debug|x86.ActiveCfg = Debug|x86
+		{A74EF474-CD86-4BA6-A96F-B1BEF5177014}.Debug|x86.Build.0 = Debug|x86
+		{A74EF474-CD86-4BA6-A96F-B1BEF5177014}.Release|x86.ActiveCfg = Release|x86
+		{A74EF474-CD86-4BA6-A96F-B1BEF5177014}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CA3EC81-44C8-4703-B7A3-B537706C4518}
 	EndGlobalSection
 EndGlobal
