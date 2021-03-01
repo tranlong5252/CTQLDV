@@ -32,15 +32,15 @@ namespace CTQLDV
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.txtBrowseimg = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.pictureDV = new System.Windows.Forms.PictureBox();
-            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtJoin = new System.Windows.Forms.DateTimePicker();
+            this.lbDateJoin = new System.Windows.Forms.Label();
+            this.lbAddress = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.btnsave = new System.Windows.Forms.Button();
             this.btndelete = new System.Windows.Forms.Button();
             this.btnedit = new System.Windows.Forms.Button();
@@ -63,21 +63,29 @@ namespace CTQLDV
             this.txtname = new System.Windows.Forms.TextBox();
             this.chknam = new System.Windows.Forms.RadioButton();
             this.btncancel = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.txtBrowseimg = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pictureDV = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtfilter = new System.Windows.Forms.TextBox();
             this.btnXuat = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.dataDoanVien = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HO_TEN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GIOI_TINH = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DIEN_THOAI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NGAY_SINH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHUC_VU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHUC_VU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TRUONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGAY_SINH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ADDRESS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIEN_THOAI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JOINED = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HINH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MO_TA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtfilter = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -89,25 +97,39 @@ namespace CTQLDV
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(12, 13);
+            this.panel1.Location = new System.Drawing.Point(7, 8);
+            this.panel1.MinimumSize = new System.Drawing.Size(870, 590);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(874, 607);
+            this.panel1.Size = new System.Drawing.Size(870, 590);
             this.panel1.TabIndex = 0;
+            // 
+            // txtID
+            // 
+            this.txtID.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.txtID.Location = new System.Drawing.Point(814, 29);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(49, 20);
+            this.txtID.TabIndex = 24;
+            this.txtID.Visible = false;
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(827, 8);
+            this.linkLabel1.Location = new System.Drawing.Point(812, 8);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(43, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(51, 13);
             this.linkLabel1.TabIndex = 2;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Tác giả";
+            this.linkLabel1.Text = "Giới thiệu";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // pictureBox1
@@ -135,10 +157,10 @@ namespace CTQLDV
             // groupBox2
             // 
             this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox2.Controls.Add(this.btnBrowse);
-            this.groupBox2.Controls.Add(this.txtBrowseimg);
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.txtID);
+            this.groupBox2.Controls.Add(this.txtJoin);
+            this.groupBox2.Controls.Add(this.lbDateJoin);
+            this.groupBox2.Controls.Add(this.lbAddress);
+            this.groupBox2.Controls.Add(this.txtAddress);
             this.groupBox2.Controls.Add(this.btnsave);
             this.groupBox2.Controls.Add(this.btndelete);
             this.groupBox2.Controls.Add(this.btnedit);
@@ -161,6 +183,9 @@ namespace CTQLDV
             this.groupBox2.Controls.Add(this.txtname);
             this.groupBox2.Controls.Add(this.chknam);
             this.groupBox2.Controls.Add(this.btncancel);
+            this.groupBox2.Controls.Add(this.btnBrowse);
+            this.groupBox2.Controls.Add(this.txtBrowseimg);
+            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox2.Location = new System.Drawing.Point(3, 49);
             this.groupBox2.Name = "groupBox2";
@@ -169,55 +194,45 @@ namespace CTQLDV
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin";
             // 
-            // btnBrowse
+            // txtJoin
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(777, 176);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowse.TabIndex = 27;
-            this.btnBrowse.Text = "Duyệt ...";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            this.txtJoin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtJoin.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtJoin.Location = new System.Drawing.Point(379, 87);
+            this.txtJoin.Name = "txtJoin";
+            this.txtJoin.Size = new System.Drawing.Size(157, 20);
+            this.txtJoin.TabIndex = 32;
             // 
-            // txtBrowseimg
+            // lbDateJoin
             // 
-            this.txtBrowseimg.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtBrowseimg.Location = new System.Drawing.Point(486, 179);
-            this.txtBrowseimg.Name = "txtBrowseimg";
-            this.txtBrowseimg.Size = new System.Drawing.Size(285, 20);
-            this.txtBrowseimg.TabIndex = 26;
+            this.lbDateJoin.AutoSize = true;
+            this.lbDateJoin.Location = new System.Drawing.Point(374, 71);
+            this.lbDateJoin.Name = "lbDateJoin";
+            this.lbDateJoin.Size = new System.Drawing.Size(82, 13);
+            this.lbDateJoin.TabIndex = 31;
+            this.lbDateJoin.Text = "Ngày vào Đoàn";
             // 
-            // groupBox3
+            // lbAddress
             // 
-            this.groupBox3.Controls.Add(this.pictureDV);
-            this.groupBox3.Location = new System.Drawing.Point(486, 24);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(94, 150);
-            this.groupBox3.TabIndex = 25;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Hình";
+            this.lbAddress.AutoSize = true;
+            this.lbAddress.Location = new System.Drawing.Point(374, 23);
+            this.lbAddress.Name = "lbAddress";
+            this.lbAddress.Size = new System.Drawing.Size(40, 13);
+            this.lbAddress.TabIndex = 29;
+            this.lbAddress.Text = "Địa chỉ";
             // 
-            // pictureDV
+            // txtAddress
             // 
-            this.pictureDV.Location = new System.Drawing.Point(6, 19);
-            this.pictureDV.Name = "pictureDV";
-            this.pictureDV.Size = new System.Drawing.Size(80, 120);
-            this.pictureDV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureDV.TabIndex = 0;
-            this.pictureDV.TabStop = false;
-            // 
-            // txtID
-            // 
-            this.txtID.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.txtID.Location = new System.Drawing.Point(805, 16);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(49, 20);
-            this.txtID.TabIndex = 24;
-            this.txtID.Visible = false;
+            this.txtAddress.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.txtAddress.Location = new System.Drawing.Point(377, 39);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(159, 20);
+            this.txtAddress.TabIndex = 28;
             // 
             // btnsave
             // 
-            this.btnsave.Location = new System.Drawing.Point(377, 179);
+            this.btnsave.Enabled = false;
+            this.btnsave.Location = new System.Drawing.Point(775, 183);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(75, 23);
             this.btnsave.TabIndex = 23;
@@ -227,7 +242,8 @@ namespace CTQLDV
             // 
             // btndelete
             // 
-            this.btndelete.Location = new System.Drawing.Point(377, 101);
+            this.btndelete.Enabled = false;
+            this.btndelete.Location = new System.Drawing.Point(775, 105);
             this.btndelete.Name = "btndelete";
             this.btndelete.Size = new System.Drawing.Size(75, 23);
             this.btndelete.TabIndex = 22;
@@ -237,7 +253,8 @@ namespace CTQLDV
             // 
             // btnedit
             // 
-            this.btnedit.Location = new System.Drawing.Point(377, 62);
+            this.btnedit.Enabled = false;
+            this.btnedit.Location = new System.Drawing.Point(775, 66);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(75, 23);
             this.btnedit.TabIndex = 21;
@@ -247,7 +264,8 @@ namespace CTQLDV
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(377, 23);
+            this.btnadd.Enabled = false;
+            this.btnadd.Location = new System.Drawing.Point(775, 27);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(75, 23);
             this.btnadd.TabIndex = 20;
@@ -411,7 +429,8 @@ namespace CTQLDV
             // 
             // btncancel
             // 
-            this.btncancel.Location = new System.Drawing.Point(377, 140);
+            this.btncancel.Enabled = false;
+            this.btncancel.Location = new System.Drawing.Point(775, 144);
             this.btncancel.Name = "btncancel";
             this.btncancel.Size = new System.Drawing.Size(75, 23);
             this.btncancel.TabIndex = 0;
@@ -419,19 +438,74 @@ namespace CTQLDV
             this.btncancel.UseVisualStyleBackColor = true;
             this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
             // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(663, 184);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.TabIndex = 27;
+            this.btnBrowse.Text = "Duyệt ...";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // txtBrowseimg
+            // 
+            this.txtBrowseimg.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.txtBrowseimg.Location = new System.Drawing.Point(377, 184);
+            this.txtBrowseimg.Name = "txtBrowseimg";
+            this.txtBrowseimg.Size = new System.Drawing.Size(276, 20);
+            this.txtBrowseimg.TabIndex = 26;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.pictureDV);
+            this.groupBox3.Location = new System.Drawing.Point(653, 27);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(90, 140);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Hình";
+            // 
+            // pictureDV
+            // 
+            this.pictureDV.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pictureDV.Location = new System.Drawing.Point(5, 13);
+            this.pictureDV.Name = "pictureDV";
+            this.pictureDV.Size = new System.Drawing.Size(80, 120);
+            this.pictureDV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureDV.TabIndex = 0;
+            this.pictureDV.TabStop = false;
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dataDoanVien);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtfilter);
             this.groupBox1.Controls.Add(this.btnXuat);
             this.groupBox1.Controls.Add(this.btnLoad);
-            this.groupBox1.Controls.Add(this.dataDoanVien);
             this.groupBox1.Location = new System.Drawing.Point(3, 299);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(860, 295);
+            this.groupBox1.Size = new System.Drawing.Size(860, 284);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dữ liệu";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(643, 19);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 13);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Tìm theo tên:";
+            // 
+            // txtfilter
+            // 
+            this.txtfilter.Location = new System.Drawing.Point(718, 16);
+            this.txtfilter.Name = "txtfilter";
+            this.txtfilter.Size = new System.Drawing.Size(132, 20);
+            this.txtfilter.TabIndex = 3;
+            this.txtfilter.TextChanged += new System.EventHandler(this.txtfilter_TextChanged);
             // 
             // btnXuat
             // 
@@ -457,20 +531,26 @@ namespace CTQLDV
             // 
             this.dataDoanVien.AllowUserToAddRows = false;
             this.dataDoanVien.AllowUserToOrderColumns = true;
+            this.dataDoanVien.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataDoanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataDoanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
             this.HO_TEN,
             this.GIOI_TINH,
-            this.DIEN_THOAI,
-            this.NGAY_SINH,
-            this.CHUC_VU,
             this.LOP,
+            this.CHUC_VU,
+            this.TRUONG,
+            this.NGAY_SINH,
+            this.ADDRESS,
+            this.DIEN_THOAI,
+            this.JOINED,
+            this.HINH,
             this.MO_TA,
             this.id});
             this.dataDoanVien.Location = new System.Drawing.Point(6, 42);
             this.dataDoanVien.Name = "dataDoanVien";
-            this.dataDoanVien.Size = new System.Drawing.Size(844, 247);
+            this.dataDoanVien.ReadOnly = true;
+            this.dataDoanVien.Size = new System.Drawing.Size(844, 234);
             this.dataDoanVien.TabIndex = 0;
             this.dataDoanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDoanVien_CellContentClick);
             // 
@@ -478,57 +558,99 @@ namespace CTQLDV
             // 
             this.STT.HeaderText = "STT";
             this.STT.Name = "STT";
-            this.STT.Width = 50;
+            this.STT.ReadOnly = true;
+            this.STT.Width = 35;
             // 
             // HO_TEN
             // 
             this.HO_TEN.DataPropertyName = "HO_TEN";
             this.HO_TEN.HeaderText = "Họ tên";
             this.HO_TEN.Name = "HO_TEN";
+            this.HO_TEN.ReadOnly = true;
+            this.HO_TEN.Width = 120;
             // 
             // GIOI_TINH
             // 
             this.GIOI_TINH.DataPropertyName = "GIOI_TINH";
+            this.GIOI_TINH.FalseValue = "";
             this.GIOI_TINH.HeaderText = "Giới tính";
+            this.GIOI_TINH.IndeterminateValue = "";
             this.GIOI_TINH.Name = "GIOI_TINH";
-            // 
-            // DIEN_THOAI
-            // 
-            this.DIEN_THOAI.DataPropertyName = "DIEN_THOAI";
-            this.DIEN_THOAI.HeaderText = "Điện thoại";
-            this.DIEN_THOAI.Name = "DIEN_THOAI";
-            this.DIEN_THOAI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DIEN_THOAI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // NGAY_SINH
-            // 
-            this.NGAY_SINH.DataPropertyName = "NGAY_SINH";
-            this.NGAY_SINH.HeaderText = "Ngày sinh";
-            this.NGAY_SINH.Name = "NGAY_SINH";
-            this.NGAY_SINH.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NGAY_SINH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CHUC_VU
-            // 
-            this.CHUC_VU.DataPropertyName = "CHUC_VU";
-            this.CHUC_VU.HeaderText = "Chức vụ";
-            this.CHUC_VU.Name = "CHUC_VU";
-            this.CHUC_VU.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CHUC_VU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.GIOI_TINH.ReadOnly = true;
+            this.GIOI_TINH.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.GIOI_TINH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.GIOI_TINH.TrueValue = "";
+            this.GIOI_TINH.Width = 40;
             // 
             // LOP
             // 
             this.LOP.DataPropertyName = "LOP";
             this.LOP.HeaderText = "Lớp";
             this.LOP.Name = "LOP";
+            this.LOP.ReadOnly = true;
             this.LOP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.LOP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.LOP.Width = 40;
+            // 
+            // CHUC_VU
+            // 
+            this.CHUC_VU.DataPropertyName = "CHUC_VU";
+            this.CHUC_VU.HeaderText = "Chức vụ";
+            this.CHUC_VU.Name = "CHUC_VU";
+            this.CHUC_VU.ReadOnly = true;
+            this.CHUC_VU.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CHUC_VU.Width = 80;
+            // 
+            // TRUONG
+            // 
+            this.TRUONG.DataPropertyName = "TRUONG";
+            this.TRUONG.HeaderText = "Trường";
+            this.TRUONG.Name = "TRUONG";
+            this.TRUONG.ReadOnly = true;
+            // 
+            // NGAY_SINH
+            // 
+            this.NGAY_SINH.DataPropertyName = "NGAY_SINH";
+            this.NGAY_SINH.HeaderText = "Ngày sinh";
+            this.NGAY_SINH.Name = "NGAY_SINH";
+            this.NGAY_SINH.ReadOnly = true;
+            this.NGAY_SINH.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ADDRESS
+            // 
+            this.ADDRESS.DataPropertyName = "ADDRESS";
+            this.ADDRESS.HeaderText = "Địa chỉ";
+            this.ADDRESS.Name = "ADDRESS";
+            this.ADDRESS.ReadOnly = true;
+            // 
+            // DIEN_THOAI
+            // 
+            this.DIEN_THOAI.DataPropertyName = "DIEN_THOAI";
+            this.DIEN_THOAI.HeaderText = "Điện thoại";
+            this.DIEN_THOAI.Name = "DIEN_THOAI";
+            this.DIEN_THOAI.ReadOnly = true;
+            this.DIEN_THOAI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // JOINED
+            // 
+            this.JOINED.DataPropertyName = "JOINED";
+            this.JOINED.HeaderText = "Ngày vào đoàn";
+            this.JOINED.Name = "JOINED";
+            this.JOINED.ReadOnly = true;
+            // 
+            // HINH
+            // 
+            this.HINH.DataPropertyName = "HINH";
+            this.HINH.HeaderText = "Hình";
+            this.HINH.Name = "HINH";
+            this.HINH.ReadOnly = true;
+            this.HINH.Visible = false;
             // 
             // MO_TA
             // 
             this.MO_TA.DataPropertyName = "MO_TA";
             this.MO_TA.HeaderText = "Mô tả";
             this.MO_TA.Name = "MO_TA";
+            this.MO_TA.ReadOnly = true;
             this.MO_TA.Width = 150;
             // 
             // id
@@ -536,37 +658,25 @@ namespace CTQLDV
             this.id.DataPropertyName = "id";
             this.id.HeaderText = "id";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             this.id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.id.Visible = false;
-            // 
-            // txtfilter
-            // 
-            this.txtfilter.Location = new System.Drawing.Point(377, 13);
-            this.txtfilter.Name = "txtfilter";
-            this.txtfilter.Size = new System.Drawing.Size(100, 20);
-            this.txtfilter.TabIndex = 3;
-            this.txtfilter.TextChanged += new System.EventHandler(this.txtfilter_TextChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(343, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(28, 13);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Lọc:";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(894, 631);
+            this.AutoSize = true;
+            this.BackgroundImage = global::CTQLDV.Properties.Resources.wp2555194;
+            this.ClientSize = new System.Drawing.Size(884, 606);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(900, 645);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý đoàn viên";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -615,15 +725,6 @@ namespace CTQLDV
         private System.Windows.Forms.Button btnadd;
         private System.Windows.Forms.Button btnXuat;
         private System.Windows.Forms.Button btnLoad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HO_TEN;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn GIOI_TINH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DIEN_THOAI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NGAY_SINH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CHUC_VU;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LOP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MO_TA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TextBox txtBrowseimg;
@@ -632,6 +733,23 @@ namespace CTQLDV
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.TextBox txtfilter;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbDateJoin;
+        private System.Windows.Forms.Label lbAddress;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.DateTimePicker txtJoin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HO_TEN;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn GIOI_TINH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LOP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CHUC_VU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TRUONG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NGAY_SINH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ADDRESS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DIEN_THOAI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JOINED;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HINH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MO_TA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }
 

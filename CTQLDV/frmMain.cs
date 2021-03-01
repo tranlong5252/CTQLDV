@@ -1,12 +1,8 @@
 ﻿using ClosedXML.Excel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CTQLDV
@@ -41,15 +37,18 @@ namespace CTQLDV
             DataRow row = DataProviderSQL.Dong_moi("HO_SO");
             row["HO_TEN"] = txtname.Text;
             row["LOP"] = txtlop.Text;
-           if( chknam.Checked==true)
-                { row["GIOI_TINH"] = 1; }
+            if (chknam.Checked == true)
+            { row["GIOI_TINH"] = 1; }
             if (chknu.Checked == true)
             { row["GIOI_TINH"] = 0; }
             row["DIEN_THOAI"] = txtphone.Text;
             row["NGAY_SINH"] = txtngaysinh.Value;
             row["TRUONG"] = txtschool.Text;
             row["CHUC_VU"] = txtperm.Text;
+            row["ADDRESS"] = txtmota.Text;
+            row["JOINED"] = txtJoin.Value;
             row["MO_TA"] = txtmota.Text;
+            
 
             if (txtBrowseimg.Text != "")
             {
@@ -59,7 +58,7 @@ namespace CTQLDV
             }
 
             DataProviderSQL.Ghi(row, "HO_SO");
-            MessageBox.Show("Đã lưu","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Đã lưu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             XuatDuLieu();
         }
 
@@ -87,7 +86,10 @@ namespace CTQLDV
             row["NGAY_SINH"] = txtngaysinh.Value;
             row["TRUONG"] = txtschool.Text;
             row["CHUC_VU"] = txtperm.Text;
+            row["ADDRESS"] = txtmota.Text;
+            row["JOINED"] = txtJoin.Value;
             row["MO_TA"] = txtmota.Text;
+            
 
             if (txtBrowseimg.Text != "")
             {
@@ -103,10 +105,13 @@ namespace CTQLDV
         private void btnLoad_Click(object sender, EventArgs e)
         {
             XuatDuLieu();
+            btnadd.Enabled = true;
         }
 
         private void dataDoanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnedit.Enabled = true;
+            btndelete.Enabled = true;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataDoanVien.Rows[e.RowIndex];
@@ -114,6 +119,8 @@ namespace CTQLDV
                 txtlop.Text = row.Cells["LOP"].Value.ToString();
                 txtphone.Text = row.Cells["DIEN_THOAI"].Value.ToString();
                 txtschool.Text = row.Cells["TRUONG"].Value.ToString();
+                txtJoin.Text = row.Cells["JOINED"].Value.ToString();
+                txtAddress.Text = row.Cells["ADDRESS"].Value.ToString();
                 txtperm.Text = row.Cells["CHUC_VU"].Value.ToString();
                 txtngaysinh.Text = row.Cells["NGAY_SINH"].Value.ToString();
                 txtmota.Text = row.Cells["MO_TA"].Value.ToString();
@@ -127,8 +134,8 @@ namespace CTQLDV
                     chknu.Checked = true;
                 }
 
-               txtID.Text = row.Cells["ID"].Value.ToString();
-                if(row.Cells["HINH"].Value.ToString()!="")
+                txtID.Text = row.Cells["ID"].Value.ToString();
+                if (row.Cells["HINH"].Value.ToString() != "")
                 {
                     byte[] bytes = (byte[])row.Cells["HINH"].Value;
                     pictureDV.Image = ByteToImage(bytes);
@@ -137,7 +144,7 @@ namespace CTQLDV
                 {
                     pictureDV.Image = null;
                 }
-              
+
             }
         }
         public static Bitmap ByteToImage(byte[] blob)
@@ -161,37 +168,42 @@ namespace CTQLDV
             btnedit.Enabled = false;
             btndelete.Enabled = false;
             txtID.Text = "";
+            txtJoin.Text = "";
+            txtAddress.Text = "";
+            pictureDV.Image = null;
         }
 
         private void btnedit_Click(object sender, EventArgs e)
         {
             btnadd.Enabled = false;
+            btnsave.Enabled = true;
         }
 
         private void btncancel_Click(object sender, EventArgs e)
         {
             btnedit.Enabled = true;
-            btndelete.Enabled = true;
+            btndelete.Enabled = default;
             btnadd.Enabled = true;
+            btnsave.Enabled = default;
         }
 
         private void btndelete_Click(object sender, EventArgs e)
         {
             if (txtID.Text == "")
             {
-                MessageBox.Show("Không có dữ liệu để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không có dữ liệu để xóa!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
                 DialogResult traloi;
-                traloi = MessageBox.Show("Bạn chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                traloi = MessageBox.Show("Bạn chắc chắn muốn xóa?         ", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (traloi == DialogResult.OK)
                 {
                     string sql = " select * from HO_SO where id = " + txtID.Text + "";
                     DataRow row = DataProviderSQL.Doc_Dong(sql);
                     DataProviderSQL.Xoa(row);
-                    MessageBox.Show("Đã xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Đã xóa!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     XuatDuLieu();
                 }
             }
@@ -199,7 +211,7 @@ namespace CTQLDV
 
         private void btnsave_Click(object sender, EventArgs e)
         {
-            if(txtID.Text=="")
+            if (txtID.Text == "")
             {
                 kiemTraTextBox();
                 NhapDuLieu();
@@ -209,26 +221,21 @@ namespace CTQLDV
                 kiemTraTextBox();
                 CapNhatDuLieu();
             }
-           
-
-
         }
-         private void kiemTraTextBox()
+        private void kiemTraTextBox()
         {
-            if(txtname.Text=="")
+            if (txtname.Text == "")
             {
-                MessageBox.Show("ĐChuwa nhapdu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn chưa nhập dữ liệu nào!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (txtlop.Text == "")
             {
-                MessageBox.Show("Đã lưu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Đã lưu         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
-
-      
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void DuyetAnh()
         {
             string duong_dan = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             string folderPath = duong_dan;
@@ -260,15 +267,21 @@ namespace CTQLDV
             }
         }
 
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            DuyetAnh();
+        }
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Phạm Trần Bạch Long\n 2021", "Tác giả", MessageBoxButtons.OK);
+            MessageBox.Show("Tác giả: Phạm Trần Bạch Long\nHướng dẫn: Hồ Thị Xuân Định\nĐược tạo vào 02/2021", "Giới thiệu");
         }
 
         private void txtfilter_TextChanged(object sender, EventArgs e)
         {
             DataTable bang = (DataTable)dataDoanVien.Tag;
             string stringExpression = "HO_TEN like '%" + txtfilter.Text.ToUpper() + "%'";
+
             DataRow[] rows = bang.Select(stringExpression);
             DataTable filterData = new DataTable();
             if (rows.Length != 0)
@@ -298,10 +311,9 @@ namespace CTQLDV
                 wb.Worksheets.Add(bang, "Sheet1");
                 wb.Worksheet(1).Columns().AdjustToContents();
                 wb.SaveAs(path);
-                MessageBox.Show("Đã xuất Excel: " + path, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Đã xuất Excel:\n" + path, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             System.Diagnostics.Process.Start(path);
         }
-        }
-     
+    }
 }
