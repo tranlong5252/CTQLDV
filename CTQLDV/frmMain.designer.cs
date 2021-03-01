@@ -97,7 +97,6 @@ namespace CTQLDV
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtID);
@@ -106,6 +105,7 @@ namespace CTQLDV
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Location = new System.Drawing.Point(7, 8);
             this.panel1.MinimumSize = new System.Drawing.Size(870, 590);
             this.panel1.Name = "panel1";
@@ -156,6 +156,7 @@ namespace CTQLDV
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox2.Controls.Add(this.txtJoin);
             this.groupBox2.Controls.Add(this.lbDateJoin);
@@ -187,7 +188,7 @@ namespace CTQLDV
             this.groupBox2.Controls.Add(this.txtBrowseimg);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox2.Location = new System.Drawing.Point(3, 49);
+            this.groupBox2.Location = new System.Drawing.Point(4, 49);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(860, 233);
             this.groupBox2.TabIndex = 1;
@@ -483,7 +484,7 @@ namespace CTQLDV
             this.groupBox1.Controls.Add(this.txtfilter);
             this.groupBox1.Controls.Add(this.btnXuat);
             this.groupBox1.Controls.Add(this.btnLoad);
-            this.groupBox1.Location = new System.Drawing.Point(3, 299);
+            this.groupBox1.Location = new System.Drawing.Point(4, 299);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(860, 284);
             this.groupBox1.TabIndex = 0;
@@ -667,7 +668,6 @@ namespace CTQLDV
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoSize = true;
             this.BackgroundImage = global::CTQLDV.Properties.Resources.wp2555194;
             this.ClientSize = new System.Drawing.Size(884, 606);
             this.Controls.Add(this.panel1);
@@ -676,7 +676,7 @@ namespace CTQLDV
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý đoàn viên";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
