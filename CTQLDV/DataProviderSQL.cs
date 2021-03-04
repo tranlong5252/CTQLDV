@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.OleDb;
-using System.Data.Sql;
 using System.Data.SqlClient;
 using System.ComponentModel;
 using System.Data;
@@ -17,8 +13,8 @@ namespace CTQLDV
     {
 
         public static string duongDan = System.IO.Directory.GetCurrentDirectory();
-        //public static String ChuoiKetNoi = @" Data Source=.\SQLEXPRESS;AttachDbFilename=" + duongDan + "\\QLCV.mdf;Integrated Security=True;User Instance=True";
-         public static String ChuoiKetNoi = @" Data Source=DELL5548\SQLEXPRESS;Initial Catalog=QLDoanVien;Integrated Security=True";
+        public static String ChuoiKetNoi = @" Data Source=.\SQLEXPRESS;AttachDbFilename=" + duongDan + "\\QLDoanVien.mdf;Integrated Security=True;";
+        //public static String ChuoiKetNoi = @" Data Source=DELL5548\SQLEXPRESS;Initial Catalog=QLDoanVien;Integrated Security=True";
         #region "DOC - GHI"
         public static DataTable Doc(String ChuoiLenh)
         {
@@ -277,7 +273,7 @@ namespace CTQLDV
             bool Kq = false;
             DataTable Bang = Dong.Table;
             Dong.Delete();
-            Kq = GhiBang(Bang, Ten_bang) > 0;
+            Kq = GhiBang(Bang, Ten_bang) > 0; 
             return Kq;
         }
 #endregion

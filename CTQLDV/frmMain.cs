@@ -15,7 +15,6 @@ namespace CTQLDV
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
             panel1.Left = this.Width / 2 - panel1.Width / 2;
         }
 
@@ -29,7 +28,7 @@ namespace CTQLDV
             dataDoanVien.Tag = dt;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                dataDoanVien.Rows[i].Cells[0].Value = (i + 1);
+                dataDoanVien.Rows[i].Cells["STT"].Value = (i + 1);
             }
         }
         private void NhapDuLieu()
@@ -45,10 +44,12 @@ namespace CTQLDV
             row["NGAY_SINH"] = txtngaysinh.Value;
             row["TRUONG"] = txtschool.Text;
             row["CHUC_VU"] = txtperm.Text;
-            row["ADDRESS"] = txtmota.Text;
-            row["JOINED"] = txtJoin.Value;
             row["MO_TA"] = txtmota.Text;
+            row["ADDRESS"] = txtAddress.Text;
+            row["JOINED"] = txtJoin.Value;
             
+            row["CARDNUM"] = txtCardNum.Text;
+
 
             if (txtBrowseimg.Text != "")
             {
@@ -56,7 +57,6 @@ namespace CTQLDV
                 byte[] data = converImgToByte(a);
                 row["HINH"] = data;
             }
-
             DataProviderSQL.Ghi(row, "HO_SO");
             MessageBox.Show("Đã lưu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             XuatDuLieu();
@@ -86,10 +86,11 @@ namespace CTQLDV
             row["NGAY_SINH"] = txtngaysinh.Value;
             row["TRUONG"] = txtschool.Text;
             row["CHUC_VU"] = txtperm.Text;
-            row["ADDRESS"] = txtmota.Text;
+            row["ADDRESS"] = txtAddress.Text;
             row["JOINED"] = txtJoin.Value;
             row["MO_TA"] = txtmota.Text;
-            
+            row["CARDNUM"] = txtCardNum.Text;
+
 
             if (txtBrowseimg.Text != "")
             {
@@ -98,7 +99,7 @@ namespace CTQLDV
                 row["HINH"] = data;
             }
             DataProviderSQL.Ghi(row, "HO_SO");
-            MessageBox.Show("Đã lưu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Đã lưu!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             XuatDuLieu();
         }
 
@@ -124,6 +125,7 @@ namespace CTQLDV
                 txtperm.Text = row.Cells["CHUC_VU"].Value.ToString();
                 txtngaysinh.Text = row.Cells["NGAY_SINH"].Value.ToString();
                 txtmota.Text = row.Cells["MO_TA"].Value.ToString();
+                txtCardNum.Text = row.Cells["CARDNUM"].Value.ToString();
                 string nam = row.Cells["GIOI_TINH"].Value.ToString();
                 if (nam == "True")
                 {
@@ -170,13 +172,17 @@ namespace CTQLDV
             txtID.Text = "";
             txtJoin.Text = "";
             txtAddress.Text = "";
+            txtCardNum.Text = "";
             pictureDV.Image = null;
+            btnsave.Enabled = true;
+            btncancel.Enabled = true;
         }
 
         private void btnedit_Click(object sender, EventArgs e)
         {
             btnadd.Enabled = false;
             btnsave.Enabled = true;
+            btncancel.Enabled = true;
         }
 
         private void btncancel_Click(object sender, EventArgs e)
@@ -185,9 +191,9 @@ namespace CTQLDV
             btndelete.Enabled = default;
             btnadd.Enabled = true;
             btnsave.Enabled = default;
+            btncancel.Enabled = default;
         }
-
-        private void btndelete_Click(object sender, EventArgs e)
+        private void Delete()
         {
             if (txtID.Text == "")
             {
@@ -200,41 +206,54 @@ namespace CTQLDV
                 traloi = MessageBox.Show("Bạn chắc chắn muốn xóa?         ", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (traloi == DialogResult.OK)
                 {
-                    string sql = " select * from HO_SO where id = " + txtID.Text + "";
-                    DataRow row = DataProviderSQL.Doc_Dong(sql);
-                    DataProviderSQL.Xoa(row);
-                    MessageBox.Show("Đã xóa!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    for (int i = 0; i < dataDoanVien.Rows.Count; i++)
+                    {
+                        if (dataDoanVien.Rows[i].Cells["CHON"].Value != null)
+                        {
+                            string id = "";
+                            id = dataDoanVien.Rows[i].Cells["ID"].Value.ToString();
+                            string sql = " select * from HO_SO where id = " + id + "";
+                            DataRow row = DataProviderSQL.Doc_Dong(sql);
+                            DataProviderSQL.Xoa(row);
+                        }
+                    
+                    }
+                    DialogResult dialogResult = MessageBox.Show("Đã xóa!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     XuatDuLieu();
                 }
             }
         }
-
-        private void btnsave_Click(object sender, EventArgs e)
+        private void btndelete_Click(object sender, EventArgs e)
+            {
+            Delete();
+        }
+                private void btnsave_Click(object sender, EventArgs e)
         {
             if (txtID.Text == "")
             {
-                kiemTraTextBox();
+                if (txtname.Text == "" || txtAddress.Text == "" || txtphone.Text == ""
+                    || txtschool.Text == "" || txtperm.Text == "" || txtlop.Text == "" || txtCardNum.Text == "")// tuong tự như vậy với các textbox còn lại
+                {
+                    MessageBox.Show("Bạn chưa nhập dữ liệu nào!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 NhapDuLieu();
             }
             else
             {
-                kiemTraTextBox();
+                if (txtname.Text == "" || txtAddress.Text == "" || txtphone.Text == ""
+                    || txtschool.Text == ""||txtperm.Text==""||txtlop.Text==""||txtCardNum.Text=="")// tuong tự như vậy với các textbox còn lại
+
+                {
+                    MessageBox.Show("Bạn chưa nhập dữ liệu nào!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 CapNhatDuLieu();
             }
+            btnsave.Enabled = default;
+            btncancel.Enabled = default;
         }
-        private void kiemTraTextBox()
-        {
-            if (txtname.Text == "")
-            {
-                MessageBox.Show("Bạn chưa nhập dữ liệu nào!         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (txtlop.Text == "")
-            {
-                MessageBox.Show("Đã lưu         ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-        }
+     
         private void DuyetAnh()
         {
             string duong_dan = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
@@ -290,30 +309,46 @@ namespace CTQLDV
                 dataDoanVien.DataSource = filterData;
                 for (int i = 0; i < dataDoanVien.Rows.Count; i++)
                 {
-                    dataDoanVien.Rows[i].Cells[0].Value = i + 1;
+                    dataDoanVien.Rows[i].Cells["STT"].Value = i + 1;
                 }
             }
         }
 
         private void btnXuat_Click(object sender, EventArgs e)
         {
-            DataTable bang = new DataTable();
-            bang = (DataTable)dataDoanVien.Tag;
-            // get path to save file
-            string fn = DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + "_" + "DanhSachKH"; //this combobox is my report name
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.FileName = fn.Replace("/", "-").Replace(" ", "_");
-            sfd.Filter = "(*.xlsx)|*.xlsx";
-            sfd.ShowDialog();
-            string path = sfd.FileName;
-            using (XLWorkbook wb = new XLWorkbook())
+            
+                DataTable bang = new DataTable();
+                bang = (DataTable)dataDoanVien.Tag;
+                // get path to save file
+                string fn = DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + "_" + "DuLieuDoanVien"; //this combobox is my report name
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Xuất Excel";
+                sfd.FileName = fn.Replace("/", "-").Replace(" ", "_");
+                sfd.Filter = "(*.xlsx)|*.xlsx";
+                sfd.RestoreDirectory = true;
+                sfd.ShowDialog();
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                { 
+                    string path = sfd.FileName;
+                    using (XLWorkbook wb = new XLWorkbook())
+                    {
+
+                        wb.Worksheets.Add(bang, "Sheet1");
+                        wb.Worksheet(1).Columns().AdjustToContents();
+                        wb.SaveAs(path);
+                        DialogResult traloi = MessageBox.Show("Đã xuất Excel:\n" + path + "\nBạn có muốn mở không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                        if (traloi == DialogResult.Yes)
+                        {
+                            System.Diagnostics.Process.Start(path);
+                        }
+                    } 
+                } 
+            else 
             {
-                wb.Worksheets.Add(bang, "Sheet1");
-                wb.Worksheet(1).Columns().AdjustToContents();
-                wb.SaveAs(path);
-                MessageBox.Show("Đã xuất Excel:\n" + path, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+               return;
             }
-            System.Diagnostics.Process.Start(path);
         }
+
     }
 }
