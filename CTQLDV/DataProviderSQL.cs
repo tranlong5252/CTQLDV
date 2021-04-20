@@ -12,9 +12,9 @@ namespace CTQLDV
     public class DataProviderSQL
     {
 
-        public static string duongDan = System.IO.Directory.GetCurrentDirectory();
-        public static String ChuoiKetNoi = @" Data Source=.\SQLEXPRESS;AttachDbFilename=" + duongDan + "\\QLDoanVien.mdf;Integrated Security=True;";
-        //public static String ChuoiKetNoi = @" Data Source=DELL5548\SQLEXPRESS;Initial Catalog=QLDoanVien;Integrated Security=True";
+        public static string duongDan = System.IO.Directory.GetCurrentDirectory(); // được chưa chú để con đi chép ra đĩa?
+        public static String ChuoiKetNoi = @" Data Source=.\SQLEXPRESS;AttachDbFilename="+ duongDan+ "\\QLDoanVien.mdf;Integrated Security=True;";
+        //  public static String ChuoiKetNoi = @" Data Source=DELL5548\SQLEXPRESS;Initial Catalog=QLDoanVien;Integrated Security=True";
         #region "DOC - GHI"
         public static DataTable Doc(String ChuoiLenh)
         {

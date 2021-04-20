@@ -326,10 +326,12 @@ namespace CTQLDV
                 sfd.FileName = fn.Replace("/", "-").Replace(" ", "_");
                 sfd.Filter = "(*.xlsx)|*.xlsx";
                 sfd.RestoreDirectory = true;
-                sfd.ShowDialog();
+           //     sfd.ShowDialog();
 
+          
+            {
                 if (sfd.ShowDialog() == DialogResult.OK)
-                { 
+                {
                     string path = sfd.FileName;
                     using (XLWorkbook wb = new XLWorkbook())
                     {
@@ -342,11 +344,9 @@ namespace CTQLDV
                         {
                             System.Diagnostics.Process.Start(path);
                         }
-                    } 
-                } 
-            else 
-            {
-               return;
+                    }
+                }
+                
             }
         }
 
